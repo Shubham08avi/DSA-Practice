@@ -78,11 +78,11 @@ void merge(long long arr1[], long long arr2[], int n, int m) {
 			}
 			// left -> arr2, right -> arr2
 			else if(left >= n && right >= n) {
-				swapGreater(arr1, arr2, left-n, right-n);
+				swapGreater(arr2, arr2, left-n, right-n);
 			}
 			// left -> arr1, right -> arr1
 			else {
-				swapGreater(arr1, arr2, left, right);
+				swapGreater(arr1, arr1, left, right);
 			}
 			left++;
 			right++;
