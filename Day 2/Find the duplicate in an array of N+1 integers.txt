@@ -59,7 +59,7 @@ int findDuplicate(vector < int > & nums) {
 	return slow;
 }
 ------------------------------------------------------------------------------------------------------------------------------------------
-Approach 4: Applicable only if no of repeated values is 2
+Approach 4: Applicable only if no. of repeated values is not more than 2
 
 ex - [2,2,2,2,2] in this case not applicable
 
