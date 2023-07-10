@@ -29,7 +29,7 @@ int majorityElement(vector<int> v) {
 ------------------------------------------------------------------------------------------------------------------------------------------
 Approach 2:
 
-TC : O(N) + O(N)
+TC : O(Nlog(N)) + O(N)
 SC : O(N)
 
 int majorityElement(vector<int> v) {
