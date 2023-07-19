@@ -27,7 +27,7 @@ int numberOfInversions(vector<int>&a, int n) {
 	return count;
 }
 ------------------------------------------------------------------------------------------------------------------------------------------
-Approach 2:
+Approach 2: Using Merge Sort
 
 TC :O(nlog(n))
 SC :O(1)
