@@ -24,6 +24,7 @@ SC : O(n*2^(n-1))
 
 void f(int i, string &s, unordered_map<string,int>&mp, vector<string>& ans, string &temp) {
     if(i == s.size()) {
+	temp.pop_back();
         ans.push_back(temp);
         return;
     }
