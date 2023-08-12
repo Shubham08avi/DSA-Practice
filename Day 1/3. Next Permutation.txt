@@ -19,7 +19,7 @@ Explanation: As we see all permutations of {1,2,3}, we find {3,2,1} at the last 
 Approach 1:
 
 TC : O(N!xN)
-SC : O(1)
+SC : O(n*n)
 
 private:
     void permute(int p, vector<int> &arr, vector<vector<int>> &res){
