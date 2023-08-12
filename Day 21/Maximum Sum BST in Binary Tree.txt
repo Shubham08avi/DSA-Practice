@@ -94,7 +94,6 @@ public:
 class Solution {
 public:
 	int sum = 0;
-	
 	nodeVal BST(TreeNode* root) {
 		if(!root) return nodeVal(INT_MIN, INT_MAX, 0);
 		
