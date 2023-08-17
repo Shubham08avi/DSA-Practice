@@ -20,7 +20,7 @@ TC: O(Nlog(N))+ O(M*N)
 SC: O(M)    M:maxDead+1
 
 bool static cmp(Job a, Job b){
-	return a.profit>b.profit;
+	return a.profit>b.profit; 	// descending order of profit. 
 }
 vector<int> JobScheduling(Job arr[], int n) { 
 	sort(arr, arr+n, cmp);
