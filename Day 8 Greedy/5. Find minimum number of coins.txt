@@ -4,7 +4,7 @@ Problem Statement: Given a value V, if we want to make a change for V Rs, and we
 
 Example 1:
 Input: V = 70
-Output: 2
+Output: 50 20
 ------------------------------------------------------------------------------------------------------------------------------------------
 Approach 1:
 
@@ -40,7 +40,7 @@ and one 5 cent coin
 Approach 1:
 
 TC: O(n*v)
-SC:	O(n*v) + O(n)
+SC: O(n*v) + O(n)
 
 long long f(int i, int coins[], int n, int v, vector<vector<int>>& dp) {
 	if(v==0) return 0;
