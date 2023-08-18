@@ -1,0 +1,42 @@
+Polymorphism
+------------------------------------------------------------------------------------------------------------------------------------------
+Polymorphism: Polymorphism allows objects of different classes to be treated as objects of a common superclass. It enables you to write
+			  code that can work with objects of multiple types in a uniform way. Polymorphism is achieved through method overriding and
+			  method overloading.
+------------------------------------------------------------------------------------------------------------------------------------------
+#include <iostream>
+using namespace std;
+
+class Animal {
+public:
+    virtual void makeSound() {
+        cout << "Animal sound!" << endl;
+    }
+};
+
+class Bird : public Animal {
+public:
+    void makeSound() override {
+        cout << "Chirp chirp!" << endl;
+    }
+};
+
+class Dog : public Animal {
+public:
+    void makeSound() override {
+        cout << "Woof woof!" << endl;
+    }
+};
+
+int main() {
+    Bird bird;
+    Dog dog;
+
+    Animal* animal1 = &bird;
+    Animal* animal2 = &dog;
+
+    animal1->makeSound();
+    animal2->makeSound();
+
+    return 0;
+}

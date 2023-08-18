@@ -3,7 +3,7 @@ Abstraction
 Abstraction: Abstraction involves representing essential features of an object while hiding unnecessary details. It allows you to create
 			 a simplified view of an object, focusing on what it does rather than how it does it. Abstract classes and interfaces are
 			 used to achieve abstraction.
-			 
+----------------------------------------------------------------------------------------------------------------------------------------- 
 #include <iostream>
 using namespace std;
 
