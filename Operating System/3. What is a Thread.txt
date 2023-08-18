@@ -1,0 +1,10 @@
+3. What is a Thread?  
+------------------------------------------------------------------------------------------------------------------------------------------
+A thread is a single sequence stream within a process. Because threads have some of the properties of processes, they are sometimes 
+called lightweight processes. 
+
+Threads are a popular way to improve the application through parallelism. 
+
+For example, in a browser, multiple tabs can be different threads. 
+
+MS Word uses multiple threads, one thread to format the text, another thread to process inputs, etc. 
