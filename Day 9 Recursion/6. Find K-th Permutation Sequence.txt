@@ -42,7 +42,8 @@ string getPermutation(int n, int k) {
 ------------------------------------------------------------------------------------------------------------------------------------------
 Approach 2:
 
-TC: O(N*N)
+TC: O(N*N)  Reason: We are placing N numbers in N positions. This will take O(N) time. For every number, we are reducing the search space by removing the element already
+		    placed in the previous step. This takes another O(N) time.
 SC: O(N)
 
 string getPermutation(int n, int k) {
