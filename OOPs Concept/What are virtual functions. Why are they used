@@ -60,6 +60,6 @@ int main() {
 }
 
 Output : Animal sound!
-		 Woof woof!
-		 Meow!
+	 Woof woof!
+	 Meow!
 
