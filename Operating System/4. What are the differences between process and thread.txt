@@ -1,7 +1,0 @@
-4. What are the differences between process and thread?
-------------------------------------------------------------------------------------------------------------------------------------------
-A thread has its own program counter (PC), a register set, and a stack space. 
-
-Threads are not independent of one another, like processes. 
-
-As a result, threads share with other threads their code section, data section, and OS resources like open files and signals.
