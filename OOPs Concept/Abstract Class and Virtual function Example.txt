@@ -1,0 +1,79 @@
+Abstract Class
+----------------------------------------------------------------------------------------------------------------------------
+an abstract class is a class that cannot be instantiated on its own and is meant to be used as a base class for other classes. It may contain one or more pure virtual functions, which are declared using the "= 0" syntax and must be implemented by any derived class.
+---------------------------------------------------------------------------------------------------------------------------- 
+#include<bits/stdc++.h>
+using namespace std;
+
+// Abstract base class
+class Shape {
+public:
+	// Pure virtual function to calculate the area
+	virtual double calculateArea() const = 0;
+
+	// Virtual function to print information about the shape
+	virtual void printInfo() const {
+		std::cout << "This is a shape." << std::endl;
+	}
+};
+
+// Derived class: Circle
+class Circle : public Shape {
+private:
+	double radius;
+
+public:
+	Circle(double r) : radius(r) {}
+
+	// Implementation of the pure virtual function
+	double calculateArea() const override {
+		return 3.14159 * radius * radius;
+	}
+
+	// Overriding the base class function
+	void printInfo() const override {
+		std::cout << "This is a circle with radius " << radius << "." << std::endl;
+	}
+};
+
+// Derived class: Rectangle
+class Rectangle : public Shape {
+private:
+	double width;
+	double height;
+
+public:
+	Rectangle(double w, double h) : width(w), height(h) {}
+
+	// Implementation of the pure virtual function
+	double calculateArea() const override {
+		return width * height;
+	}
+
+	// Overriding the base class function
+	void printInfo() const override {
+		std::cout << "This is a rectangle with width " << width << " and height " << height << "." << std::endl;
+	}
+};
+
+int main() {
+#ifndef ONLINE_JUDGE
+	//for getting input from input.txt
+	freopen("input.txt", "r", stdin);
+	//for writing output to output.txt
+	freopen("output.txt", "w", stdout);
+#endif
+	Circle circle(5.0);
+	Rectangle rectangle(4.0, 6.0);
+
+	// Using polymorphism to call the calculateArea and printInfo functions
+	Shape* shapes[] = {&circle, &rectangle};
+
+	for (const auto& shape : shapes) {
+		shape->printInfo();
+		std::cout << "Area: " << shape->calculateArea() << std::endl;
+		std::cout << std::endl;
+	}
+
+	return 0;
+}

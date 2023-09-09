@@ -1,0 +1,86 @@
+Polymorphism is a fundamental concept in object-oriented programming (OOP) that allows objects of different classes to be treated as objects of a common base class. It enables you to write more flexible and reusable code by allowing you to work with objects in a generic way, without needing to know their specific types. Polymorphism is achieved through method overriding and interfaces in many programming languages.
+
+There are two main types of polymorphism in OOP:
+
+1. **Compile-time Polymorphism (Static Binding or Early Binding):**
+   - This type of polymorphism is resolved at compile time.
+   - It is also known as method overloading or operator overloading.
+   - Method overloading occurs when a class has multiple methods with the same name but different parameter lists.
+   - The appropriate method to call is determined based on the number and types of arguments provided at compile time.
+
+   Here's an example of compile-time polymorphism in C++:
+
+   #include <iostream>
+
+   class Calculator {
+   public:
+       int add(int a, int b) {
+           return a + b;
+       }
+
+       double add(double a, double b) {
+           return a + b;
+       }
+   };
+
+   int main() {
+       Calculator calc;
+       int result1 = calc.add(5, 10);         // Calls the int version of add
+       double result2 = calc.add(3.5, 2.5);  // Calls the double version of add
+
+       std::cout << "Result1: " << result1 << std::endl;
+       std::cout << "Result2: " << result2 << std::endl;
+
+       return 0;
+   }
+   ```
+
+2. **Run-time Polymorphism (Dynamic Binding or Late Binding):**
+   - This type of polymorphism is resolved at runtime.
+   - It is also known as method overriding or interface-based polymorphism.
+   - Method overriding occurs when a subclass provides a specific implementation for a method that is already defined in its superclass.
+   - The appropriate method to call is determined based on the actual object's type at runtime.
+
+   Here's an example of run-time polymorphism in C++ using virtual functions:
+
+   ```cpp
+   #include <iostream>
+
+   class Animal {
+   public:
+       virtual void makeSound() {
+           std::cout << "Some sound" << std::endl;
+       }
+   };
+
+   class Dog : public Animal {
+   public:
+       void makeSound() override {
+           std::cout << "Bark" << std::endl;
+       }
+   };
+
+   class Cat : public Animal {
+   public:
+       void makeSound() override {
+           std::cout << "Meow" << std::endl;
+       }
+   };
+
+   int main() {
+       Animal* myDog = new Dog();
+       Animal* myCat = new Cat();
+
+       myDog->makeSound();  // Calls Dog's makeSound method
+       myCat->makeSound();  // Calls Cat's makeSound method
+
+       delete myDog;
+       delete myCat;
+
+       return 0;
+   }
+   ```
+
+In this run-time polymorphism example, `makeSound` is overridden in the `Dog` and `Cat` classes. Polymorphism is achieved when we create objects of these classes and call `makeSound` on them. The actual implementation of `makeSound` that gets executed is determined at runtime based on the actual type of the object.
+
+These examples demonstrate how polymorphism enhances code reusability and allows for more generic and flexible programming in C++.
