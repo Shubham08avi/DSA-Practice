@@ -1,0 +1,432 @@
+------------------------------------------------------------------------------------------------------------------------------------------
+Object Example:
+
+#include <iostream>
+using namespace std;
+
+class Student{
+private:
+	string name;
+	string surname;
+	int rollNo;
+
+public:
+	Student(string studentName, string studentSurname, int studentRollNo){
+		name = studentName;
+		surname = studentSurname;
+		rollNo = studentRollNo;
+	}
+
+	void getStudentDetails(){
+		cout << "The name of the student is " << name << " " << surname << endl;
+		cout << "The roll no of the student is " << rollNo << endl;
+	}
+};
+
+int main() {
+	Student student1("Vivek", "Yadav", 20);
+	student1.getStudentDetails();
+
+	return 0;
+}
+------------------------------------------------------------------------------------------------------------------------------------------
+Encapsultion Example:
+
+#include <iostream>
+#include <string>
+
+class Student {
+private:
+    std::string name;
+    int age;
+    double gpa;
+
+public:
+    Student(std::string n, int a, double g) {
+        name = n;
+        age = a;
+        gpa = g;
+    }
+
+    std::string getName() const {
+        return name;
+    }
+
+    int getAge() const {
+        return age;
+    }
+
+    double getGpa() const {
+        return gpa;
+    }
+
+    void setName(const std::string& n) {
+        name = n;
+    }
+
+    void setAge(int a) {
+        if (a >= 0) {
+            age = a;
+        }
+    }
+
+    void setGpa(double g) {
+        if (g >= 0.0 && g <= 4.0) {
+            gpa = g;
+        }
+    }
+
+    void displayInfo() const {
+        std::cout << "Name: " << name << std::endl;
+        std::cout << "Age: " << age << std::endl;
+        std::cout << "GPA: " << gpa << std::endl;
+    }
+};
+
+int main() {
+    Student student("Alice", 20, 3.5);
+
+    std::cout << "Student Information:" << std::endl;
+    std::cout << "Name: " << student.getName() << std::endl;
+    std::cout << "Age: " << student.getAge() << std::endl;
+    std::cout << "GPA: " << student.getGpa() << std::endl;
+
+    student.setAge(21);
+    student.setGpa(3.8);
+
+    std::cout << "\nUpdated Student Information:" << std::endl;
+    student.displayInfo();
+
+    return 0;
+}
+------------------------------------------------------------------------------------------------------------------------------------------
+Abstraction Example:
+
+#include <iostream>
+
+class Shape {
+public:
+    virtual double calculateArea() const = 0;
+
+    virtual void displayInfo() const = 0;
+};
+
+class Circle : public Shape {
+private:
+    double radius;
+
+public:
+    Circle(double r) : radius(r) {}
+
+    double calculateArea() const override {
+        return 3.14159 * radius * radius;
+    }
+
+    void displayInfo() const override {
+        std::cout << "Circle with radius " << radius << std::endl;
+    }
+};
+
+class Rectangle : public Shape {
+private:
+    double width;
+    double height;
+
+public:
+    Rectangle(double w, double h) : width(w), height(h) {}
+
+    double calculateArea() const override {
+        return width * height;
+    }
+
+    void displayInfo() const override {
+        std::cout << "Rectangle with width " << width << " and height " << height << std::endl;
+    }
+};
+
+int main() {
+    Circle circle(5.0);
+    Rectangle rectangle(4.0, 6.0);
+
+    Shape* shapes[] = {&circle, &rectangle};
+
+    for (const auto& shape : shapes) {
+        shape->displayInfo();
+        std::cout << "Area: " << shape->calculateArea() << std::endl;
+    }
+
+    return 0;
+}
+------------------------------------------------------------------------------------------------------------------------------------------
+Polymorphism:
+
+1. Compile-Time Polymorphism (Static Binding):
+#include <iostream>
+class Calculator {
+public:
+    int add(int a, int b) {
+        return a + b;
+    }
+
+    double add(double a, double b) {
+        return a + b;
+    }
+};
+
+int main() {
+    Calculator calc;
+    int result1 = calc.add(5, 10);
+    double result2 = calc.add(3.5, 2.5);  
+
+    std::cout << "Result1: " << result1 << std::endl;
+    std::cout << "Result2: " << result2 << std::endl;
+
+    return 0;
+}
+
+2. Run-Time Polymorphism (Dynamic Binding):
+#include <iostream>
+class Animal {
+public:
+    virtual void makeSound() {
+        std::cout << "Some sound" << std::endl;
+    }
+};
+
+class Dog : public Animal {
+public:
+    void makeSound() override {
+        std::cout << "Bark" << std::endl;
+    }
+};
+
+class Cat : public Animal {
+public:
+    void makeSound() override {
+        std::cout << "Meow" << std::endl;
+    }
+};
+
+int main() {
+    Animal* myDog = new Dog();
+    Animal* myCat = new Cat();
+
+    myDog->makeSound();  
+    myCat->makeSound(); 
+
+    delete myDog;
+    delete myCat;
+
+    return 0;
+}
+------------------------------------------------------------------------------------------------------------------------------------------
+Inheritance Example:
+
+1. Single Inheritance:
+class Shape {
+public:
+    void draw() {
+        std::cout << "Drawing a shape." << std::endl;
+    }
+};
+
+class Circle : public Shape {
+public:
+    void draw() {
+        std::cout << "Drawing a circle." << std::endl;
+    }
+};
+
+int main() {
+    Circle circle;
+    circle.draw();  // Calls the draw method from Circle class
+    return 0;
+}
+In this example, Circle is a derived class that inherits from the Shape base class using single inheritance.
+
+2. Multiple Inheritance:
+class Shape {
+public:
+    void draw() {
+        std::cout << "Drawing a shape." << std::endl;
+    }
+};
+
+class Color {
+public:
+    void fill() {
+        std::cout << "Filling with color." << std::endl;
+    }
+};
+
+class Circle : public Shape, public Color {
+public:
+    void draw() {
+        std::cout << "Drawing a circle." << std::endl;
+    }
+};
+
+int main() {
+    Circle circle;
+    circle.draw();  // Calls the draw method from Circle class
+    circle.fill();  // Calls the fill method from Color class
+    return 0;
+}
+In this example, Circle is a derived class that inherits from both the Shape and Color base classes using multiple inheritance.
+
+3. Multilevel Inheritance:
+class Animal {
+public:
+    void eat() {
+        std::cout << "Animal is eating." << std::endl;
+    }
+};
+
+class Dog : public Animal {
+public:
+    void bark() {
+        std::cout << "Dog is barking." << std::endl;
+    }
+};
+
+class Bulldog : public Dog {
+public:
+    void run() {
+        std::cout << "Bulldog is running." << std::endl;
+    }
+};
+
+int main() {
+    Bulldog bulldog;
+    bulldog.eat();  // Calls the eat method from Animal class
+    bulldog.bark(); // Calls the bark method from Dog class
+    bulldog.run();  // Calls the run method from Bulldog class
+    return 0;
+}
+In this example, Bulldog inherits from Dog, and Dog inherits from Animal in a multilevel inheritance hierarchy.
+
+4. Hierarchical Inheritance:
+class Animal {
+public:
+    void eat() {
+        std::cout << "Animal is eating." << std::endl;
+    }
+};
+
+class Dog : public Animal {
+public:
+    void bark() {
+        std::cout << "Dog is barking." << std::endl;
+    }
+};
+
+class Cat : public Animal {
+public:
+    void meow() {
+        std::cout << "Cat is meowing." << std::endl;
+    }
+};
+
+int main() {
+    Dog dog;
+    Cat cat;
+    dog.eat();  
+    dog.bark(); 
+    cat.eat();  
+    cat.meow(); 
+    return 0;
+}
+
+5.Hybird Inheritance:
+class Vehicle {
+public:
+    void start() {
+        std::cout << "Vehicle started." << std::endl;
+    }
+};
+
+class Engine {
+public:
+    void ignite() {
+        std::cout << "Engine ignited." << std::endl;
+    }
+};
+
+class Car : public Vehicle {
+public:
+    void drive() {
+        std::cout << "Car is being driven." << std::endl;
+    }
+};
+
+class SportsCar : public Car, public Engine {
+public:
+    void race() {
+        std::cout << "Sports car is racing." << std::endl;
+    }
+};
+
+int main() {
+    SportsCar sportsCar;
+
+    sportsCar.start();  // Calls start from Vehicle class (single inheritance)
+    sportsCar.ignite(); // Calls ignite from Engine class (single inheritance)
+    sportsCar.drive();   // Calls drive from Car class (single inheritance)
+    sportsCar.race();    // Calls race from SportsCar class (single inheritance)
+
+    return 0;
+}
+------------------------------------------------------------------------------------------------------------------------------------------
+Constructor Example:
+#include <iostream>
+#include <string>
+
+class Person {
+public:
+    // Default constructor
+    Person() {
+        std::cout << "Default Constructor called" << std::endl;
+        name = "John Doe";
+        age = 30;
+    }
+
+    // Parameterized constructor
+    Person(std::string n, int a) {
+        std::cout << "Parameterized Constructor called" << std::endl;
+        name = n;
+        age = a;
+    }
+
+    // Copy constructor
+    Person(const Person& other) {
+        std::cout << "Copy Constructor called" << std::endl;
+        name = other.name;
+        age = other.age;
+    }
+
+    // Member function to display person information
+    void displayInfo() {
+        std::cout << "Name: " << name << ", Age: " << age << std::endl;
+    }
+
+private:
+    std::string name;
+    int age;
+};
+
+int main() {
+    // Default constructor
+    Person person1;
+    person1.displayInfo();
+
+    // Parameterized constructor
+    Person person2("Alice", 25);
+    person2.displayInfo();
+
+    // Copy constructor
+    Person person3 = person2; 
+    person3.displayInfo();
+
+    return 0;
+}
+
